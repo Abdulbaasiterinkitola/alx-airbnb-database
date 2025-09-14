@@ -81,3 +81,50 @@ The queries use the following PostgreSQL tables:
 
 - **Non-correlated subquery**: The inner query can run independently of the outer query
 - **Correlated subquery**: The inner query references columns from the outer query and executes once for each row
+
+# Aggregations and Window Functions - PostgreSQL
+
+This directory contains SQL queries demonstrating aggregation functions and window functions for the ALX Airbnb Database project using PostgreSQL.
+
+## Files
+
+- `aggregations_and_window_functions.sql` - Contains the required aggregation and window function queries
+- `README.md` - This documentation file
+
+## Queries Included
+
+### 1. Aggregation Query
+Finds the total number of bookings made by each user using the `COUNT` function and `GROUP BY` clause.
+
+**Functions Used:**
+- `COUNT()` - Counts the number of bookings per user
+- `GROUP BY` - Groups results by user attributes
+- `LEFT JOIN` - Includes users with zero bookings
+
+### 2. Window Functions Query
+Ranks properties based on the total number of bookings they have received using window functions.
+
+**Functions Used:**
+- `ROW_NUMBER()` - Assigns unique sequential numbers
+- `RANK()` - Assigns ranks with gaps for tied values
+- `OVER()` - Defines the window for ranking
+
+## Usage
+
+Execute the queries in PostgreSQL:
+
+```bash
+psql -U your_username -d your_database -f aggregations_and_window_functions.sql
+```
+
+## Database Tables
+
+The queries use the following PostgreSQL tables:
+- `"user"`
+- `booking`
+- `property`
+
+## Key Differences
+
+- **ROW_NUMBER()**: Always assigns unique sequential numbers (1, 2, 3, 4...)
+- **RANK()**: Assigns same rank for tied values with gaps (1, 2, 2, 4...)
